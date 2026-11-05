@@ -26,7 +26,17 @@ def test_show_update_delete_note(client, registered_user):
 
     updated = client.patch(f"/notes/{note_id}", json={"title": "Updated"})
     assert updated.status_code == 200
+    
+
+    response = client.get(f"/notes/{note_id}")
+    assert response.status_code == 200
+    assert response.get_json()["note"]["title"] == "Updated"
+
+    deleted = client.delete(f"/notes/{note_id}")
+    assert deleted.status_code == 204
+
     assert client.get(f"/notes/{note_id}").status_code == 404
+
 
 def test_users_cannot_access_each_others_notes(client, app):
     create_note(client, "Alice note", "Private")

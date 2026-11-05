@@ -5,7 +5,7 @@ class NoteSchema(Schema):
     content = fields.String(required=True, validate=validate.Length(min=1))
 
     def load_create(self, data):
-        return self.data(data)
+        return self.load(data)
 
     def load_update(self, data):
         if not isinstance(data, dict) or not data:
@@ -13,7 +13,7 @@ class NoteSchema(Schema):
         allowed = {"title", "content"}
         unknown = set(data) - allowed
         if unknown:
-            raise ValidationError({key: ["Unknown field."] for key in uknown})
+            raise ValidationError({key: ["Unknown field."] for key in unknown})
         return self.load(data, partial=True)
 
 
