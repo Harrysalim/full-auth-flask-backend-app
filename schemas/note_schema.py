@@ -12,7 +12,7 @@ class NoteSchema(Schema):
             raise ValidationError("Request body must contain at least one field.")
         allowed = {"title", "content"}
         unknown = set(data) - allowed
-        if unknown
+        if unknown:
             raise ValidationError({key: ["Unknown field."] for key in uknown})
         return self.load(data, partial=True)
 

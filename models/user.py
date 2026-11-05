@@ -13,7 +13,7 @@ class User(db.Model):
 
     notes = db.relationship(
         "Note",
-        back_populates="user"
+        back_populates="user",
         cascade="all, delete-orphan",
         lazy=True,
     )

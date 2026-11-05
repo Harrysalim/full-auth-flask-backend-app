@@ -70,7 +70,7 @@ def login():
     return jsonify(user=user.to_dict()), 200
 
 @auth_bp.post("/logout")
-def logout:
+def logout():
     session.clear()
     return jsonify(message="Logged out successfully"), 200
 

@@ -36,8 +36,8 @@ def test_login_and_check_session(client, registered_user):
 def test_login_rejects_wrong_password(client, registered_user):
     response = client.post(
         "/login", json={"username": "testuser", "password": "wrong-password"}
-        )
-        assert response.status_code == 401
+    )
+    assert response.status_code == 401
 
 def test_logout_clears_session(client, registered_user):
     response = client.post("/logout")

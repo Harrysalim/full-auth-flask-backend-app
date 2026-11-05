@@ -8,7 +8,7 @@ class TestConfig:
     SECRET_KEY = "test-secret"
     SQLALCHEMY_DATABASE_URI = "sqlite://"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SESSION_COOKIE HTTPONLY = True
+    SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = "Lax"
 
 

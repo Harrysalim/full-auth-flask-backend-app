@@ -1,6 +1,6 @@
 import os
 
-from Flask import Flask, jsonify, request
+from flask import Flask, jsonify, request
 from sqlalchemy import inspect
 
 from config import Config
@@ -25,7 +25,7 @@ def create_app(config_class=Config):
     @app.get("/")
     def home():
         return jsonify(
-            message = "Productivity Notes API"
+            message="Productivity Notes API",
             endpoints={
                 "signup": "POST /signup",
                 "login": "POST /login",
